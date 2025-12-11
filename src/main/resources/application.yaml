@@ -1,0 +1,24 @@
+
+logging:
+  level:
+    org.springframework: INFO
+    org.cowary: INFO
+spring:
+  application:
+    name: air-monitor-back
+  datasource:
+    url: ${db.url}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      schema: myne
+      username: ${db.username}
+      password: ${db.password}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      session.events.log.LOG_QUERIES_SLOWER_THAN_MS: 25
+  liquibase:
+    enabled: true
+server:
+  port: 8090
