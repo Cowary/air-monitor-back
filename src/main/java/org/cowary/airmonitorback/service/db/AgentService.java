@@ -39,4 +39,8 @@ public class AgentService {
         log.debug("New agent registered: {}", agent);
         return true;
     }
+
+    public Agent findByName(String name) {
+        return agentRepository.findByName(name).orElseThrow();
+    }
 }

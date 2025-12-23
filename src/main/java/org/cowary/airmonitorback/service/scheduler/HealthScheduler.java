@@ -13,8 +13,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @Service
@@ -28,7 +26,6 @@ public class HealthScheduler {
     @Scheduled(fixedRate = 300000)
     public void healthCheck() {
         log.info("Health check started");
-        List<HealthHistory> healthHistories = new ArrayList<>();
         Flux.fromStream(agentService.findAll().stream())
                 .flatMap(agent -> {
                     String url = "http://" + agent.getIpAddress() + ":" + agent.getPort() + "/health";

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class AgentController {
-    private final AgentRepository agentRepository;
+    final AgentRepository agentRepository;
     final AgentService agentService;
 
     @GetMapping("/list")
