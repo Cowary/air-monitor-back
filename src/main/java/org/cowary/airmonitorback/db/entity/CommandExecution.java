@@ -2,20 +2,23 @@ package org.cowary.airmonitorback.db.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import lombok.experimental.Accessors;
 
-@Table(name = "health_history")
+@Table(name = "command_execution")
 @Entity
 @Data
-@Accessors(chain = true)
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class HealthHistory extends BaseEntity {
+public class CommandExecution extends BaseEntity {
     @Column(nullable = false)
-    boolean isHealthy;
+    String status;
     @ManyToOne
     @JoinColumn(name = "agent_id", nullable = false)
     Agent agent;
+    @ManyToOne
+    @JoinColumn(name = "command_id", nullable = false)
+    Command command;
+    String output;
+    String aiAnalyze;
 }

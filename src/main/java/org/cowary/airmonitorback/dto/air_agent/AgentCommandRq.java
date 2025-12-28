@@ -1,4 +1,4 @@
-package org.cowary.airmonitorback.dto;
+package org.cowary.airmonitorback.dto.air_agent;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CommandRq {
-    Long id;
-    String name;
-    String commandText;
+public class AgentCommandRq {
+    String command;
 }

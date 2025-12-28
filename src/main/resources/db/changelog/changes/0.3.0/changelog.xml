@@ -1,0 +1,58 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="cowary" id="1-create-command">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="command"/>
+            </not>
+        </preConditions>
+        <createTable tableName="command">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(256)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="command_text" type="clob">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_ts" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_ts" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="cowary" id="2-create-command_execution">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="command_execution"/>
+            </not>
+        </preConditions>
+        <createTable tableName="command_execution">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(256)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="agent_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="command_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="output" type="clob"/>
+            <column name="ai_analyze" type="clob"/>
+            <column name="created_ts" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_ts" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

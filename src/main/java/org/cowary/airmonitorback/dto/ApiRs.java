@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CommandRq {
-    Long id;
-    String name;
-    String commandText;
+public class ApiRs<T> {
+    T data;
+    String errorMessage;
+    ErrorType error;
 }

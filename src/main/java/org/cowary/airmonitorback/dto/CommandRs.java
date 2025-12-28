@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AgentCommandRq {
-    String command;
+public class CommandRs {
+    Long id;
+    String name;
+    String commandText;
 }
