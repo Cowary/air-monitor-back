@@ -54,4 +54,13 @@ public class CommandController {
                 .build();
         return ResponseEntity.status(HttpStatus.CREATED).body(result);
     }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<ApiRs<Boolean>> deleteCommand(@RequestParam("id") Long id) {
+        var isDeleted = commandService.deleteCommand(id);
+        ApiRs<Boolean> result = ApiRs.<Boolean>builder()
+                .data(isDeleted)
+                .build();
+        return ResponseEntity.ok(result);
+    }
 }

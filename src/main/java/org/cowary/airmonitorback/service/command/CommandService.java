@@ -40,4 +40,9 @@ public class CommandService {
     public Command saveCommand(Command command) {
         return commandRepository.save(command);
     }
+
+    public boolean deleteCommand(Long id) {
+        commandRepository.deleteById(id);
+        return true;
+    }
 }
